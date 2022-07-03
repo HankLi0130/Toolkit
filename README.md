@@ -6,7 +6,8 @@ Basic Kotlin constants, functions and classes to help building Android Apps effi
 
 ## How to install?
 
-1. If using Gradle 7 or above, add it in your root `settings.gradle` at the end of repositories:
+1. If you're using Gradle 7 or above, add it in your root `settings.gradle` at the end of
+   repositories:
 
 ``` gradle
 dependencyResolutionManagement {
