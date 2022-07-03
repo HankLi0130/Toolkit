@@ -1,4 +1,4 @@
-package hankdev.app.toolkit.core.common
+package hankdev.app.toolkit.core.function
 
 import android.content.Intent
 import android.content.Intent.*
