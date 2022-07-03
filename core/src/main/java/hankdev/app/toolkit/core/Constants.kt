@@ -1,4 +1,4 @@
-package hankdev.app.toolkit.core.constant
+package hankdev.app.toolkit.core
 
 const val EMPTY = ""
 const val ZERO = 0
