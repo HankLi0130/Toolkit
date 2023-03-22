@@ -1,5 +1,7 @@
 package hankdev.app.toolkit.core
 
+const val VERSION = BuildConfig.CORE_VERSION
+
 const val EMPTY = ""
 const val ZERO = 0
 const val ZERO_LONG = 0L
