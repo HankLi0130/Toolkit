@@ -34,7 +34,7 @@ allprojects {
 
 ``` gradle
 dependencies {
-    implementation 'com.github.hankli0130:Toolkit:Tag'
+    implementation 'com.github.hankli0130:toolkit:Tag'
 }
 ```
 
