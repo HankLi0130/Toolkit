@@ -1,6 +1,5 @@
 package app.hankdev.toolkit.ui
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -48,17 +47,19 @@ class ProcessDialog : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<CircularProgressIndicator>(R.id.view_indicator).apply {
-            val indicatorColor = arguments?.getInt(KEY_INDICATOR_COLOR) ?: Color.GREEN
-            this.setIndicatorColor(indicatorColor)
+        arguments?.getInt(KEY_INDICATOR_COLOR)?.let { color ->
+            view.findViewById<CircularProgressIndicator>(R.id.view_indicator).apply {
+                this.setIndicatorColor(color)
+            }
         }
 
-        view.findViewById<TextView>(R.id.view_title).apply {
-            val title = arguments?.getString(KEY_TITLE)
-            this.isVisible = !title.isNullOrEmpty()
-            this.text = title
+        arguments?.getString(KEY_TITLE)?.let { title ->
+            view.findViewById<TextView>(R.id.view_title).apply {
+                this.text = title
+                this.isVisible = true
+            }
         }
 
-        isCancelable = arguments?.getBoolean(KEY_CANCELABLE) ?: false
+        arguments?.getBoolean(KEY_CANCELABLE)?.let { this.isCancelable = it }
     }
 }

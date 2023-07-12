@@ -34,6 +34,7 @@
                 android:layout_marginBottom="@dimen/distance_16_dp"
                 android:textColor="@android:color/darker_gray"
                 android:textStyle="bold"
+                android:visibility="gone"
                 tools:text="Please, wait..." />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
