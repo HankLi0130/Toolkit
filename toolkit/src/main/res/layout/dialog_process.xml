@@ -14,7 +14,7 @@
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -37,7 +37,7 @@
                 android:visibility="gone"
                 tools:text="Please, wait..." />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
