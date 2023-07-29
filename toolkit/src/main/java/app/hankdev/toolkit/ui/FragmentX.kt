@@ -44,7 +44,7 @@ fun Fragment.showMessageDialog(
     @StringRes messageId: Int,
     @StringRes buttonTextId: Int = android.R.string.ok,
     cancelable: Boolean = false,
-    listener: (DialogInterface, Int) -> Unit
+    listener: (DialogInterface, Int) -> Unit = { dialog, _ -> dialog.dismiss() }
 ) {
     val title = if (titleId == NO_RESOURCE) null else getString(titleId)
     AlertDialog.Builder(requireContext())
@@ -61,7 +61,7 @@ fun Fragment.showMessageDialog(
     message: String? = null,
     buttonText: String,
     cancelable: Boolean = false,
-    listener: (DialogInterface, Int) -> Unit
+    listener: (DialogInterface, Int) -> Unit = { dialog, _ -> dialog.dismiss() }
 ) {
     AlertDialog.Builder(requireContext())
         .setTitle(title)
