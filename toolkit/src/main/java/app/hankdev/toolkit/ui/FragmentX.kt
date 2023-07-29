@@ -13,7 +13,7 @@ import app.hankdev.toolkit.NO_RESOURCE
 fun Fragment.showListDialog(
     @StringRes titleId: Int = NO_RESOURCE,
     @ArrayRes itemsId: Int,
-    cancelable: Boolean = true,
+    cancelable: Boolean = false,
     listener: (DialogInterface, Int) -> Unit
 ) {
     val title = if (titleId == NO_RESOURCE) null else getString(titleId)
@@ -28,7 +28,7 @@ fun Fragment.showListDialog(
 fun Fragment.showListDialog(
     title: String? = null,
     items: Array<out CharSequence>,
-    cancelable: Boolean = true,
+    cancelable: Boolean = false,
     listener: (DialogInterface, Int) -> Unit
 ) {
     AlertDialog.Builder(requireContext())
@@ -42,8 +42,8 @@ fun Fragment.showListDialog(
 fun Fragment.showMessageDialog(
     @StringRes titleId: Int = NO_RESOURCE,
     @StringRes messageId: Int,
-    @StringRes buttonTextId: Int,
-    cancelable: Boolean = true,
+    @StringRes buttonTextId: Int = android.R.string.ok,
+    cancelable: Boolean = false,
     listener: (DialogInterface, Int) -> Unit
 ) {
     val title = if (titleId == NO_RESOURCE) null else getString(titleId)
@@ -60,7 +60,7 @@ fun Fragment.showMessageDialog(
     title: String? = null,
     message: String? = null,
     buttonText: String,
-    cancelable: Boolean = true,
+    cancelable: Boolean = false,
     listener: (DialogInterface, Int) -> Unit
 ) {
     AlertDialog.Builder(requireContext())
