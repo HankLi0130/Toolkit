@@ -3,8 +3,10 @@ package app.hankdev.toolkit.ui
 import android.content.DialogInterface
 import android.widget.Toast
 import androidx.annotation.ArrayRes
+import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import app.hankdev.toolkit.NO_RESOURCE
 
@@ -75,3 +77,5 @@ fun Fragment.showToast(text: CharSequence, duration: Int = Toast.LENGTH_LONG) =
 
 fun Fragment.showToast(@StringRes resId: Int, duration: Int = Toast.LENGTH_LONG) =
     Toast.makeText(requireContext(), resId, duration).show()
+
+fun Fragment.getColor(@ColorRes resId: Int) = ContextCompat.getColor(requireContext(), resId)
