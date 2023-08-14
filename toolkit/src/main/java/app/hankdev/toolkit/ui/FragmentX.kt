@@ -5,10 +5,10 @@ import android.widget.Toast
 import androidx.annotation.ArrayRes
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import app.hankdev.toolkit.NO_RESOURCE
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 fun Fragment.showListDialog(
     @StringRes titleId: Int = NO_RESOURCE,
@@ -17,7 +17,7 @@ fun Fragment.showListDialog(
     listener: (DialogInterface, Int) -> Unit
 ) {
     val title = if (titleId == NO_RESOURCE) null else getString(titleId)
-    AlertDialog.Builder(requireContext())
+    MaterialAlertDialogBuilder(requireContext())
         .setTitle(title)
         .setCancelable(cancelable)
         .setItems(itemsId, listener)
@@ -31,7 +31,7 @@ fun Fragment.showListDialog(
     cancelable: Boolean = false,
     listener: (DialogInterface, Int) -> Unit
 ) {
-    AlertDialog.Builder(requireContext())
+    MaterialAlertDialogBuilder(requireContext())
         .setTitle(title)
         .setCancelable(cancelable)
         .setItems(items, listener)
@@ -47,7 +47,7 @@ fun Fragment.showMessageDialog(
     listener: (DialogInterface, Int) -> Unit = { dialog, _ -> dialog.dismiss() }
 ) {
     val title = if (titleId == NO_RESOURCE) null else getString(titleId)
-    AlertDialog.Builder(requireContext())
+    MaterialAlertDialogBuilder(requireContext())
         .setTitle(title)
         .setMessage(messageId)
         .setCancelable(cancelable)
@@ -63,7 +63,7 @@ fun Fragment.showMessageDialog(
     cancelable: Boolean = false,
     listener: (DialogInterface, Int) -> Unit = { dialog, _ -> dialog.dismiss() }
 ) {
-    AlertDialog.Builder(requireContext())
+    MaterialAlertDialogBuilder(requireContext())
         .setTitle(title)
         .setMessage(message)
         .setCancelable(cancelable)
