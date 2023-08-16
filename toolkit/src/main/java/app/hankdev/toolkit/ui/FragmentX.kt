@@ -1,6 +1,7 @@
 package app.hankdev.toolkit.ui
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.widget.Toast
 import androidx.annotation.ArrayRes
 import androidx.annotation.ColorRes
@@ -8,6 +9,9 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import app.hankdev.toolkit.NO_RESOURCE
+import app.hankdev.toolkit.function.copyToClipboard
+import app.hankdev.toolkit.function.getLoadWebUrlIntent
+import app.hankdev.toolkit.function.getSendTextIntent
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 fun Fragment.showListDialog(
@@ -79,3 +83,26 @@ fun Fragment.showToast(@StringRes resId: Int, duration: Int = Toast.LENGTH_LONG)
     Toast.makeText(requireContext(), resId, duration).show()
 
 fun Fragment.getColor(@ColorRes resId: Int) = ContextCompat.getColor(requireContext(), resId)
+
+fun Fragment.copyToClipboard(label: String, text: String) =
+    requireContext().copyToClipboard(label, text)
+
+/**
+ * adding a <queries> declaration to your manifest when calling this method
+ * https://developer.android.com/guide/components/intents-common#ViewUrl
+ */
+fun Fragment.openWebPage(url: String) {
+    val intent = getLoadWebUrlIntent(url)
+    if (intent.resolveActivity(requireContext().packageManager) != null) {
+        startActivity(intent)
+    }
+}
+
+/**
+ * https://developer.android.com/training/sharing/send#send-text-content
+ */
+fun Fragment.shareText(text: String, type: String = "text/plain") {
+    val intent = getSendTextIntent(text, type)
+    val shareIntent = Intent.createChooser(intent, null)
+    startActivity(shareIntent)
+}
