@@ -1,4 +1,4 @@
-package app.hankdev.toolkit.function
+package app.hankdev.toolkit.extension
 
 import android.Manifest.permission.ACCESS_NETWORK_STATE
 import android.content.ClipData

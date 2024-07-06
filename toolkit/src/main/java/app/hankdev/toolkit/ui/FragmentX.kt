@@ -9,7 +9,7 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import app.hankdev.toolkit.NO_RESOURCE
-import app.hankdev.toolkit.function.copyToClipboard
+import app.hankdev.toolkit.extension.copyToClipboard
 import app.hankdev.toolkit.function.getLoadWebUrlIntent
 import app.hankdev.toolkit.function.getSendTextIntent
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
