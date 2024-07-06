@@ -8,3 +8,5 @@ const val ZERO_LONG = 0L
 const val ZERO_FLOAT = 0.0F
 const val ZERO_DOUBLE = 0.0
 const val NO_RESOURCE = ZERO
+
+const val SHARE_TYPE_TEXT = "text/plain"

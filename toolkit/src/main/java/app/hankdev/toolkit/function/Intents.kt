@@ -7,6 +7,7 @@ import android.content.Intent.ACTION_VIEW
 import android.content.Intent.EXTRA_TEXT
 import android.net.Uri
 import android.provider.CalendarContract
+import app.hankdev.toolkit.SHARE_TYPE_TEXT
 
 /**
  * Add a calendar event.
@@ -37,7 +38,7 @@ fun getLoadWebUrlIntent(url: String) = Intent(ACTION_VIEW, Uri.parse(url))
  * Sending text content
  * https://developer.android.com/training/sharing/send#send-text-content
  */
-fun getSendTextIntent(text: String, type: String = "text/plain") = Intent().apply {
+fun getSendTextIntent(text: String, type: String = SHARE_TYPE_TEXT) = Intent().apply {
     action = ACTION_SEND
     putExtra(EXTRA_TEXT, text)
     this.type = type
