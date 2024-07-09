@@ -1,4 +1,4 @@
-package app.hankdev.toolkit.extension
+package app.hankdev.toolkit.function
 
 import android.Manifest.permission.ACCESS_NETWORK_STATE
 import android.content.ClipData
@@ -14,19 +14,18 @@ import androidx.annotation.RequiresPermission
  * https://stackoverflow.com/questions/57284582/networkinfo-has-been-deprecated-by-api-29
  */
 @RequiresPermission(allOf = [ACCESS_NETWORK_STATE])
-fun Context.isNetworkAvailable(): Boolean {
-    val connectivityManager = getSystemService(ConnectivityManager::class.java)
+fun isNetworkAvailable(context: Context): Boolean {
+    val connectivityManager = context.getSystemService(ConnectivityManager::class.java)
 
     val network = connectivityManager.activeNetwork ?: return false
-    val networkCapabilities =
-        connectivityManager.getNetworkCapabilities(network) ?: return false
+    val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
     return when {
-        networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-        networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+        capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+        capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
         // for other device how are able to connect with Ethernet
-        networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+        capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
         // for check internet over Bluetooth
-        networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
+        capabilities.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
         else -> false
     }
 }
@@ -36,8 +35,8 @@ fun Context.isNetworkAvailable(): Boolean {
  * https://developer.android.com/training/basics/network-ops/managing#check-connection
  */
 @RequiresPermission(allOf = [ACCESS_NETWORK_STATE])
-fun Context.isOnline(): Boolean {
-    val connMgr = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+fun isOnline(context: Context): Boolean {
+    val connMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val networkInfo: NetworkInfo? = connMgr.activeNetworkInfo
     return networkInfo?.isConnected == true
 }
@@ -46,8 +45,8 @@ fun Context.isOnline(): Boolean {
  * Copying to the Clipboard
  * https://developer.android.com/guide/topics/text/copy-paste#Copying
  */
-fun Context.copyToClipboard(label: String, text: String) {
-    val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+fun copyToClipboard(context: Context, label: String, text: String) {
+    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clip = ClipData.newPlainText(label, text)
     clipboard.setPrimaryClip(clip)
 }
