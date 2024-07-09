@@ -1,11 +1,32 @@
 package app.hankdev.toolkit.extension
 
 import android.content.Intent
+import androidx.annotation.StyleRes
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import app.hankdev.toolkit.NO_RESOURCE
 import app.hankdev.toolkit.SHARE_TYPE_TEXT
+import app.hankdev.toolkit.function.copyToClipboard
 import app.hankdev.toolkit.function.getAddingCalendarEventIntent
 import app.hankdev.toolkit.function.getLoadWebUrlIntent
 import app.hankdev.toolkit.function.getSendTextIntent
+import app.hankdev.toolkit.function.showAlertDialog
+import app.hankdev.toolkit.function.showMaterialAlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
+fun AppCompatActivity.showMaterialAlertDialog(
+    overrideThemeResId: Int = NO_RESOURCE,
+    setBuilder: MaterialAlertDialogBuilder.() -> Unit
+): AlertDialog = showMaterialAlertDialog(this, overrideThemeResId, setBuilder)
+
+fun AppCompatActivity.showAlertDialog(
+    @StyleRes themeResId: Int = NO_RESOURCE,
+    setBuilder: AlertDialog.Builder.() -> Unit
+): AlertDialog = showAlertDialog(this, themeResId, setBuilder)
+
+fun AppCompatActivity.copyToClipboard(label: String, text: String) {
+    copyToClipboard(this, label, text)
+}
 
 /**
  * Add a calendar event.
