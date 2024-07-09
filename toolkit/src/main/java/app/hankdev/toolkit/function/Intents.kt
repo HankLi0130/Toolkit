@@ -14,7 +14,7 @@ import app.hankdev.toolkit.SHARE_TYPE_TEXT
  * Require intent filter.
  * https://developer.android.com/guide/components/intents-common#AddEvent
  */
-fun getEventAddingIntent(
+fun getAddingCalendarEventIntent(
     title: String,
     location: String,
     begin: Long,
