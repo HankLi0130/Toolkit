@@ -3,8 +3,21 @@ package app.hankdev.toolkit.extension
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import app.hankdev.toolkit.SHARE_TYPE_TEXT
+import app.hankdev.toolkit.function.getAddingCalendarEventIntent
 import app.hankdev.toolkit.function.getLoadWebUrlIntent
 import app.hankdev.toolkit.function.getSendTextIntent
+
+/**
+ * Add a calendar event.
+ * Require intent filter.
+ * https://developer.android.com/guide/components/intents-common#AddEvent
+ */
+fun AppCompatActivity.addCalendarEvent(title: String, location: String, begin: Long, end: Long) {
+    val intent = getAddingCalendarEventIntent(title, location, begin, end)
+    if (intent.resolveActivity(packageManager) != null) {
+        startActivity(intent)
+    }
+}
 
 /**
  * adding a <queries> declaration to your manifest when calling this method
